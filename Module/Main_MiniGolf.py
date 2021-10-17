@@ -30,18 +30,20 @@ pygame.display.update()                              # Pushes the change to the 
 open = True                                          # Sets open state
 
 Clock = pygame.time.Clock()                          # Creates a clock to store framerate
-Clock.tick(FPS)                                      # Set Framerate
 
 
-#set ball's color and size
-playerBall = Ball(XPOS,YPOS,RED)
-#set ball's location on screen
 
+#set ball's color, size, and pos
+playerBall = Ball(XPOS,YPOS,WHITE)
+
+
+# print(playerBall.rect.x)
 
 all_sprites_list = pygame.sprite.Group()
 all_sprites_list.add(playerBall)
 
-while open:                                             
+while open:
+    Clock.tick(FPS)                                           
     for event in pygame.event.get():                 # Checking for an event and storing all events in the event box
         if event.type == pygame.QUIT:                # If the X is pressed, Close the game -- This can also be used to handle events such as the close in the UI
            open = False                              # Sets open state to False
@@ -53,6 +55,9 @@ while open:
                 # Set the velocity of the ball and the direction using Trig and a Set Velocity --  Call a function?
              # If no, do nothing
     
+    playerBall.rect.x += 1                           # Moves the Rect
+    print(playerBall.rect.x)
+
     drawWindow(display,BLACK,all_sprites_list)       # Sets the window white
     
 pygame.quit()                                        # Quits pygame
