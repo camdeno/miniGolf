@@ -8,24 +8,38 @@ class clickPos():
         x = x
         y = y
 
-def getMouse(button, ballXPos, ballYPos):
+def getMouse(button, ballXPos, ballYPos, mouseStatus):
     match button:
         case 1:
             print("Hey you have clicked the left mouse button")
             click = clickPos
+            firstClick = clickPos
+            secondClick = clickPos
             mousePos = pygame.mouse.get_pos()
             click.x = mousePos[0]
             click.y = mousePos[1]
-            print(click.x)
-            print(click.y)
-            # if (x  is > ball pos x && x is < ball pos x + size && y is > ball pos y && y is < ball pos y + size)
-            # Return True
-            # else
-            # Return False  
-            if ((click.x > ballXPos) and (click.x < (ballXPos + 80)) and (click.y > ballYPos) and (click.y < (ballYPos + 50))):
-                return True
-            else:
-                return False
+            # if ((click.x > ballXPos) and (click.x < (ballXPos + 80)) and (click.y > ballYPos) and (click.y < (ballYPos + 50))):
+            #     return True
+            # else:
+            #     return False
+            if mouseStatus == 0:
+               check = pygame.mouse.get_pos()
+               firstClick = clickPos
+               firstClick.x = check[0]
+               firstClick.y = check[1]
+               print("We registered a down click")
+               print(firstClick.x)
+               print(firstClick.y)
+               return firstClick
+            elif mouseStatus == 1:
+               check = pygame.mouse.get_pos()
+               secondClick = clickPos
+               secondClick.x = check[0]
+               secondClick.y = check[1]
+               print("We registered a up click")
+               print(secondClick.x)
+               print(secondClick.y)
+               return secondClick
         case 2:
             print("Hey you have clicked the middle mouse button")
         case 3:

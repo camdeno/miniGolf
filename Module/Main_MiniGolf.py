@@ -1,13 +1,12 @@
 # A simple mini golf game used to learn python
 
-
 # Launch and Initialize
 import pygame
 import os 
 
 from pygame.constants import MOUSEBUTTONDOWN                                        
 from drawWindow import drawWindow                    
-from getMouse import getMouse
+from getMouse import *
 from Ball import Ball 
 
 pygame.init()                                        # Initializes pygame
@@ -28,7 +27,6 @@ display = pygame.display.set_mode ((WIDTH,HEIGHT))   # Sets the display screen s
 pygame.display.set_caption("Mini Golf")              # Sets the display caption to the game name
 pygame.display.update()                              # Pushes the change to the window
 open = True                                          # Sets open state
-
 Clock = pygame.time.Clock()                          # Creates a clock to store framerate
 
 
@@ -46,14 +44,21 @@ while open:
            open = False                              # Sets open state to False
         elif event.type == pygame.MOUSEBUTTONDOWN: 
              # Check to see if the ball is under the mouse button
-                button = event.button
-                isClicked = getMouse(button,playerBall.rect.x,playerBall.rect.y)
+               button = event.button
+               status = 0
+               getMouse(button,playerBall.rect.x,playerBall.rect.y, status)
+                #isClicked = getMouse(button,playerBall.rect.x,playerBall.rect.y)
              # If True, Draw Vector from where the mouse was to where it gets drug to
-                if isClicked == True:
-                    playerBall.rect.x += 20         # Move the Ball if it gets touched. 
+                #if isClicked == True:
+                   # playerBall.rect.x += 20         # Move the Ball if it gets touched. 
                 # Set the velocity of the ball and the direction using Trig and a Set Velocity --  Call a function?
              # If no, do nothing
-    
+
+               
+        elif event.type == pygame.MOUSEBUTTONUP:
+               button = event.button
+               status = 1
+               getMouse(button,playerBall.rect.x,playerBall.rect.y, status)
     #playerBall.rect.x += 1                           # Moves the Rect
     #print(playerBall.rect.x)                         # Prints X POS
 
@@ -61,5 +66,3 @@ while open:
     
 pygame.quit()                                        # Quits pygame
 quit()                                               # Quits the module
-
-
