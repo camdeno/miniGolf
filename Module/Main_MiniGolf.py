@@ -46,7 +46,8 @@ while open:
              # Check to see if the ball is under the mouse button
                button = event.button
                status = 0
-               getMouse(button,playerBall.rect.x,playerBall.rect.y, status)
+               down = clickPos
+               down = getMouse(button,playerBall.rect.x,playerBall.rect.y, status)
                 #isClicked = getMouse(button,playerBall.rect.x,playerBall.rect.y)
              # If True, Draw Vector from where the mouse was to where it gets drug to
                 #if isClicked == True:
@@ -58,7 +59,9 @@ while open:
         elif event.type == pygame.MOUSEBUTTONUP:
                button = event.button
                status = 1
-               getMouse(button,playerBall.rect.x,playerBall.rect.y, status)
+               up = clickPos
+               up = getMouse(button,playerBall.rect.x,playerBall.rect.y, status)
+               
     #playerBall.rect.x += 1                           # Moves the Rect
     #print(playerBall.rect.x)                         # Prints X POS
 

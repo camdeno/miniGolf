@@ -11,7 +11,6 @@ class clickPos():
 def getMouse(button, ballXPos, ballYPos, mouseStatus):
     match button:
         case 1:
-            print("Hey you have clicked the left mouse button")
             click = clickPos
             firstClick = clickPos
             secondClick = clickPos
@@ -27,21 +26,23 @@ def getMouse(button, ballXPos, ballYPos, mouseStatus):
                firstClick = clickPos
                firstClick.x = check[0]
                firstClick.y = check[1]
-               print("We registered a down click")
-               print(firstClick.x)
-               print(firstClick.y)
                return firstClick
             elif mouseStatus == 1:
                check = pygame.mouse.get_pos()
                secondClick = clickPos
                secondClick.x = check[0]
                secondClick.y = check[1]
-               print("We registered a up click")
-               print(secondClick.x)
-               print(secondClick.y)
                return secondClick
-        case 2:
-            print("Hey you have clicked the middle mouse button")
-        case 3:
-            print("Hey you have clicked the right mouse button") 
+        case 2: # Middle Mouse Button
+            # Avoid returning an error by returning 0. No Vector can be created with 0 
+            click = clickPos
+            click.x = 0
+            click.y = 0
+            return click
+        case 3: # Right Mouse Button
+            # Avoid returning an error by returning 0. No Vector can be created with 0 
+            click = clickPos
+            click.x = 0
+            click.y = 0
+            return click
     return
