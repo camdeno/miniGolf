@@ -8,7 +8,7 @@ class clickPos():
         x = x
         y = y
 
-def getMouse(button):
+def getMouse(button, ballXPos, ballYPos):
     match button:
         case 1:
             print("Hey you have clicked the left mouse button")
@@ -20,10 +20,14 @@ def getMouse(button):
             print(click.y)
             # if (x  is > ball pos x && x is < ball pos x + size && y is > ball pos y && y is < ball pos y + size)
             # Return True
-            # elif
+            # else
             # Return False  
+            if ((click.x > ballXPos) and (click.x < (ballXPos + 80)) and (click.y > ballYPos) and (click.y < (ballYPos + 50))):
+                return True
+            else:
+                return False
         case 2:
             print("Hey you have clicked the middle mouse button")
         case 3:
             print("Hey you have clicked the right mouse button") 
-    return button
+    return

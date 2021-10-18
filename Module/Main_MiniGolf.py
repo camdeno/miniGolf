@@ -47,13 +47,15 @@ while open:
         elif event.type == pygame.MOUSEBUTTONDOWN: 
              # Check to see if the ball is under the mouse button
                 button = event.button
-                getMouse(button)
+                isClicked = getMouse(button,playerBall.rect.x,playerBall.rect.y)
              # If True, Draw Vector from where the mouse was to where it gets drug to
+                if isClicked == True:
+                    playerBall.rect.x += 20         # Move the Ball if it gets touched. 
                 # Set the velocity of the ball and the direction using Trig and a Set Velocity --  Call a function?
              # If no, do nothing
     
-    playerBall.rect.x += 1                           # Moves the Rect
-    print(playerBall.rect.x)                         # Prints X POS
+    #playerBall.rect.x += 1                           # Moves the Rect
+    #print(playerBall.rect.x)                         # Prints X POS
 
     drawWindow(display,BLACK,all_sprites_list)       # Sets the window white
     
