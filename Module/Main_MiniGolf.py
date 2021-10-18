@@ -16,11 +16,11 @@ pygame.init()                                        # Initializes pygame
 WIDTH = 800                                          # CONST that Sets the Width of the Window
 HEIGHT = 600                                         # CONST that Sets the Height of the Window
 FPS = 60                                             # CONST that Sets the Framerate of the Window
-WHITE = (255,255,255)
-BLACK = (0,0,0)
-RED = (255,0,0)
-XPOS = 200
-YPOS = 300
+WHITE = (255,255,255)                                # CONST Color White
+BLACK = (0,0,0)                                      # CONST Color Black
+RED = (255,0,0)                                      # CONST Color Red
+XPOS = 200                                           # CONST Starting XPOS for Ball
+YPOS = 300                                           # CONST Starting YPOS for Ball
 
 
 # Create Window and Main Game Loop
@@ -34,16 +34,13 @@ Clock = pygame.time.Clock()                          # Creates a clock to store 
 
 
 #set ball's color, size, and pos
-playerBall = Ball(XPOS,YPOS,WHITE)
+playerBall = Ball(XPOS,YPOS,WHITE)                   # Create playerBall
 
-
-# print(playerBall.rect.x)
-
-all_sprites_list = pygame.sprite.Group()
-all_sprites_list.add(playerBall)
+all_sprites_list = pygame.sprite.Group()             # Create Sprite List
+all_sprites_list.add(playerBall)                     # Add playerball to Sprite List
 
 while open:
-    Clock.tick(FPS)                                           
+    Clock.tick(FPS)                                  # Sets the Framerate       
     for event in pygame.event.get():                 # Checking for an event and storing all events in the event box
         if event.type == pygame.QUIT:                # If the X is pressed, Close the game -- This can also be used to handle events such as the close in the UI
            open = False                              # Sets open state to False
@@ -56,7 +53,7 @@ while open:
              # If no, do nothing
     
     playerBall.rect.x += 1                           # Moves the Rect
-    print(playerBall.rect.x)
+    print(playerBall.rect.x)                         # Prints X POS
 
     drawWindow(display,BLACK,all_sprites_list)       # Sets the window white
     
